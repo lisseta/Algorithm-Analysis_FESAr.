@@ -1,3 +1,5 @@
+# ! Requiere una lista de datos de tipo int
+# R Devuelve la lista de datos ordenada de manera ascendente
 def metodoBurbuja(lista):
     if(type(lista) == list):
         for i in range(1, len(lista)):
@@ -7,8 +9,10 @@ def metodoBurbuja(lista):
                     lista[j] = lista[j + 1]
                     lista[j + 1] = auxiliar
     else:
-        print("Te dije que era una lista")
+        print("Te dije que era una lista guey")
 
+# ! Requiere una lista de datos de tipo int
+# R Devuelve la lista de datos ordenada de manera ascendente
 def metodoSeleccion(lista):
     if(type(lista) == list):
         for i in range(0, len(lista)):
@@ -23,6 +27,8 @@ def metodoSeleccion(lista):
     else:
         print("Se necesita una lista para funcionar el algoritmo")
 
+# ! Requiere una lista de datos de tipo int
+# R Devuelve la lista de datos ordenada de manera ascendente
 def metodoInsercion(lista):
     if(type(lista) == list):
         for i in range(len(lista)):
@@ -34,13 +40,10 @@ def metodoInsercion(lista):
     else:
         print("Se necesita una lista para trabajar el metodo")
 
-# def metodoInsercion(lista):
-#     for i in range(1, len(lista) -1):
-#         auxiliar = lista[i]
-#         for j in range(i - 1, (j >= 0 and lista[j] > auxiliar), -1):
-#             lista[j + 1] = lista[j]
-#             lista[j] = auxiliar
-
+# ! Requiere una lista de datos de tipo int, 
+#   un indice para clasificar el punto menor para el ordenamiento de la lista 
+#   y un índice mayor para ordenar la lista como límite final
+# R Devuelve la lista de datos ordenada de manera ascendente
 def metodoQuickSort(lista, izquierdo, derecho):
     if(type(lista) == list and type(izquierdo and derecho) == int):
         pivote = lista[izquierdo]
@@ -70,52 +73,7 @@ def metodoQuickSort(lista, izquierdo, derecho):
     else:
         print("Se necesita una lista para trabajar el metodo")
 
-# Segundo metodo de QuickSort
-def metodoQuickSortDos(lista):
-    izquierda = []
-    centro = []
-    derecha = []
-    
-    if(len(lista) >  1):
-        pivote = lista[0]
-        for i in lista:
-            if(i < pivote):
-                izquierda.append(i)
-            elif (i == pivote):
-                centro.append(i)
-            elif(i > pivote):
-                derecha.append(i)
-        return metodoQuickSortDos(izquierda) + centro + metodoQuickSortDos(derecha)
-    else:
-        return lista
-
-#Tercer metodo QuickSort
-def particionLista(lista, menor, mayor):
-    pivote = lista[menor]
-    left = menor
-    right = mayor
-    
-    while True:
-        while left <= right and lista[left] <= pivote:
-            left += 1
-        while left <= right and lista[right] >= pivote:
-            right -= 1
-        
-        if right < left:
-            break
-        else:
-            lista[left], lista[right] = lista[right], lista[left]
-    lista[menor], lista[right] = lista[right], lista[menor]
-    return right
-
-def metodoQuickSortTres(lista, menor, mayor):
-    if(menor < mayor):
-        pivote = particionLista(lista, menor, mayor)
-        metodoQuickSortTres(lista, menor, pivote - 1)
-        metodoQuickSortTres(lista, pivote + 1, mayor)
-
-
 if __name__ == "__main__":
-    lista = [34, 5, 23, 98, 557, 34]
-    metodoQuickSortTres(lista, 0, len(lista) - 1)
+    lista = [34, 5, 23, 98, 557, 34, 2, 3, 5, 1, 1, 1, 5, 89, 200, 325, 200, 125, 65, 75, 90, 65, 65]
+    metodoQuickSort(lista, 0, len(lista) - 1)
     print(lista)
